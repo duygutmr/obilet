@@ -1,0 +1,23 @@
+.journey-card {
+  .card {
+    padding: 6px 8px 10px 8px;
+    &-info {
+      display: flex;
+      .icon {
+        display: inline-block;
+        transform: rotate(180deg);
+      }
+    }
+    &-price {
+      background-color: $secondary-color;
+      color: $white;
+      font-size: $font-size-s;
+      font-weight: 500; 
+      border-radius: 5px;
+      padding: 3px 10px;
+    }
+    p {
+      font-size: $font-size-xs;
+    }
+  }
+}

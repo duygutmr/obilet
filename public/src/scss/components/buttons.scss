@@ -1,0 +1,18 @@
+.btn {
+  &.btn-primary {
+    background-color: $primary-color;
+    color: $white;
+    border: 1px solid $primary-color;
+  }
+  &.btn-day {
+    padding: 5px 14px;
+    border: 1px solid $btn-gray;
+    color: $btn-gray;
+    width: 75px;
+    font-size: $font-size-xs;
+    &.active {
+      background-color: $btn-gray;
+      color: $white;
+    }
+  }
+}

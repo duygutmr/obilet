@@ -1,0 +1,47 @@
+.search {
+  background-color: $bg-gray;
+  form {
+    padding: 27px 0;
+    .form{
+        &-wrapper {
+            margin-bottom: 20px;
+            position: relative;
+
+            .switch-btn{
+                position: absolute;
+                top: 50%;
+                right: 5%;
+                transform: translate(-5%,-50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                border: 1px solid $border-gray;
+                width: 30px;
+                height: 30px;
+                .icon{
+                    color: $icon-gray;
+                    font-size: 20px;
+                }
+            }
+        }
+        &-group {
+            padding: 11px;
+            background-color: $white;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            label {
+              color: $primary-color;
+              font-weight: 500;
+            }
+            .icon {
+              color: $icon-gray;
+              margin-right: 14px;
+            }
+          }
+    }
+   
+   
+  }
+}

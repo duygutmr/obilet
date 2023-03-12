@@ -1,0 +1,38 @@
+@font-face {
+	font-family: "fonticons";
+	src: url('../fonts/web-icons/fonticons.eot');
+	src: url('../fonts/web-icons/fonticons.eot?#iefix') format('eot'),
+		url('../fonts/web-icons/fonticons.woff2') format('woff2'),
+		url('../fonts/web-icons/fonticons.woff') format('woff'),
+		url('../fonts/web-icons/fonticons.ttf') format('truetype'),
+		url('../fonts/web-icons/fonticons.svg#fonticons') format('svg');
+}
+
+.icon:before {
+	font-family: "fonticons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-arrow-left:before {
+	content: "\E001";
+}
+
+.icon-calendar:before {
+	content: "\E002";
+}
+
+.icon-location:before {
+	content: "\E003";
+}
+
+.icon-switch:before {
+	content: "\E004";
+}
