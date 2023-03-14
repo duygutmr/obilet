@@ -27,7 +27,6 @@ const getSession = async () => {
 
     try {
         const rest = await axios(config);
-        console.log(rest.data);
         return rest.data
     } catch (error) {
         console.log(error);

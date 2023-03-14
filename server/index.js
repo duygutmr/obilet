@@ -1,18 +1,17 @@
-const getSession = require('./getSession.js');
+const getBusLocations = require('./getBusLocations.js');
 const express = require('express');
 const cors = require('cors')
 const app = express()
 
 app.use(cors())
 
-app.get('/getBusLocation', (req, res) => {
+app.get('/getBusLocation', async (req, res) => {
     try {
-        const session = getSession();
-        console.log(session);
+        const busLocations = await getBusLocations();
+        res.send(busLocations);
     } catch (error) {
         console.log(error);
     }
-    res.send('Hello World!');
 })
 
 app.listen(3000, function() {
