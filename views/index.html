@@ -28,11 +28,13 @@
               <div>
                 <label for="origin">Nereden</label>
                 <div class="select">
-                  <select id="origin">
-                    <!-- <option value="Option 1" selected>izmir</option>
-                    <option value="Option 2" >istanbul</option> -->
-                  </select>
-                  <span class="focus"></span>
+                  <select id="origin"></select>
+                  <input
+                    type="text"
+                    class="originText"
+                    name="originText"
+                    value=""
+                  />
                 </div>
               </div>
             </div>
@@ -41,13 +43,17 @@
               <div>
                 <label for="destination">Nereye</label>
                 <div class="select">
-                  <select id="destination">
-                    <!-- <option value="Option 1" selected>ankara</option> -->
-                  </select>
-                  <span class="focus"></span>
+                  <select id="destination"></select>
+                  <input
+                    type="text"
+                    class="destinationText"
+                    name="destinationText"
+                    value=""
+                  />
                 </div>
               </div>
             </div>
+
             <span class="switch-btn">
               <em class="icon icon-switch"></em>
             </span>
@@ -64,7 +70,13 @@
               <button class="btn btn-day date-tomorrow">Yarın</button>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary mt-3 mx-5 w-75">Bileti Bul</button>
+          <button type="submit" class="btn btn-primary mt-3 mx-5 w-75">
+            Bileti Bul
+          </button>
+          <span id="journeyOrigin"></span>
+          <span id="departureTime"></span>
+          <span id="journeyDestination"></span>
+          <span id="arrivalTime"></span>
         </form>
       </div>
     </main>
@@ -78,7 +90,6 @@
           Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
           molestie consequat, vel illum dolore eu feugiat nulla facilisis at
           vero eros et accumsan et iusto odio dignissim qui blandit praesent
-
         </p>
       </div>
     </section>
