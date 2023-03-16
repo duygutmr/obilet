@@ -7,27 +7,20 @@ try {
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
 
-  function formatDate(date) {
-    var d = new Date(date),
-      month = "" + (d.getMonth() + 1),
-      day = "" + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-  }
 
   datepicker(dateInput, {
     startDay: new Date().getDay(),
     showAllDates: true,
     formatter: (input, date, instance) => {
-      const value = formatDate(date);
+      const value = date.toISOString().slice(0, 10);
       input.value = value;
     },
     dateSelected: tomorrow,
     minDate: today,
+    formatDate: "yyyy-mm-dd",
+    onSelect (instance, date) {
+      localStorage.setItem("selectedDate", date.toISOString().slice(0, 10));
+    },
 
     customMonths: [
       "Ocak",
@@ -49,10 +42,10 @@ try {
   dateTomorrow.addEventListener("click", (e) => {
     e.preventDefault();
     datepicker.dateSelected = tomorrow;
-
     dateInput.value = tomorrow.toISOString().slice(0, 10);
     dateTomorrow.classList.add("active");
     dateToday.classList.remove("active");
+    localStorage.setItem("selectedDate", tomorrow.toISOString().slice(0, 10));
   });
   dateToday.addEventListener("click", (e) => {
     e.preventDefault();
@@ -60,6 +53,7 @@ try {
     dateInput.value = today.toISOString().slice(0, 10);
     dateToday.classList.add("active");
     dateTomorrow.classList.remove("active");
+    localStorage.setItem("selectedDate", today.toISOString().slice(0, 10));
   });
 } catch (error) {
   console.log(error);
