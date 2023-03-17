@@ -101,7 +101,7 @@ try {
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     window.location.href =
-      "/journey-index.html?originText=&destinationText=&datepicker=";
+      "/journey-index.html";
   });
 } catch (error) {
   console.log(error);
