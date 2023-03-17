@@ -1,13 +1,13 @@
 # obilet
 
-## start server
-```bash
+### start server
+
 yarn install
 node index.js
 
 
-## start local
-```bash
+### start local
+
 yarn install
 npm run dev
 
