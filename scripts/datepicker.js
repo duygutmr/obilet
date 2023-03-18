@@ -11,8 +11,8 @@ try {
   datepicker(dateInput, {
     startDay: new Date().getDay(),
     showAllDates: true,
-    formatter: (input, date, instance) => {
-      const value = date.toISOString().slice(0, 10);
+    formatter: (input) => {
+      const value = tomorrow.toISOString().slice(0, 10);
       input.value = value;
     },
     dateSelected: tomorrow,
