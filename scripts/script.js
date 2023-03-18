@@ -1,7 +1,10 @@
 try {
   const origin = document.getElementById("origin");
   const destination = document.getElementById("destination");
-  const date = document.getElementById("datepicker").value;
+
+
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate()+1);
 
   const selectedOptionOrigin = origin.options[origin.selectedIndex];
   const selectedOptionDestination =
@@ -14,6 +17,8 @@ try {
   destination.addEventListener("change", (e) => {
     localStorage.setItem("selectedOptionDestination", e.target.value);
   });
+
+  localStorage.setItem("selectedDate", tomorrow.toISOString().slice(0, 10));
 
   const selectedDate = localStorage.getItem("selectedDate");
 
@@ -94,6 +99,7 @@ try {
 
   window.addEventListener("load", () => {
     getLocations();
+
   });
 
   const submitBtn = document.querySelector("[type=submit]");

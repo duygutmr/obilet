@@ -16,6 +16,7 @@ try {
       input.value = value;
     },
     dateSelected: tomorrow,
+    defaultDate: tomorrow,
     minDate: today,
     formatDate: "yyyy-mm-dd",
     onSelect (instance, date) {
