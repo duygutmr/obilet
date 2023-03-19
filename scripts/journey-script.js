@@ -15,7 +15,7 @@ try {
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-      originId: selectedOptionOrigin,
+      originId: lastSelectedOptionOrigin,
       destinationId: lastSelectedOptionDestination,
       departureDate: selectedDate,
     });
