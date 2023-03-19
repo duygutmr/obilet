@@ -5,7 +5,7 @@ try {
   const cardWrapper = document.querySelectorAll(".card-wrapper");
 
   const getJourneys = () => {
-    const lastSelectedOptionOrigin = localStorage.getItem(
+    const selectedOptionOrigin = localStorage.getItem(
       "selectedOptionOrigin"
     );
     const lastSelectedOptionDestination = localStorage.getItem(
@@ -17,7 +17,7 @@ try {
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-      originId: lastSelectedOptionOrigin,
+      originId: selectedOptionOrigin,
       destinationId: lastSelectedOptionDestination,
       departureDate: selectedDate,
     });

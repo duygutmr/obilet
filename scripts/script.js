@@ -2,9 +2,8 @@ try {
   const origin = document.getElementById("origin");
   const destination = document.getElementById("destination");
 
-
   var tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate()+1);
+  tomorrow.setDate(tomorrow.getDate() + 1);
 
   const selectedOptionOrigin = origin.options[origin.selectedIndex];
   const selectedOptionDestination =
@@ -20,13 +19,6 @@ try {
 
   localStorage.setItem("selectedDate", tomorrow.toISOString().slice(0, 10));
 
-  const selectedDate = localStorage.getItem("selectedDate");
-
-  const lastSelectedOptionOrigin = localStorage.getItem("selectedOptionOrigin");
-  const lastSelectedOptionDestination = localStorage.getItem(
-    "selectedOptionDestination"
-  );
-
 
   const getLocations = () => {
     const requestOptions = {
@@ -41,45 +33,33 @@ try {
         let destinationOption;
         for (let i = 0; i < data.data.length; i++) {
           originOption = document.createElement("option");
-          destinationOption = document.createElement("option");
+
           originOption.value = data.data[i].id;
           originOption.innerHTML = data.data[i].name;
 
-          destinationOption.value = data.data[i].id;
-          destinationOption.innerHTML = data.data[i].name;
-
           origin.appendChild(originOption);
-          destination.appendChild(destinationOption);
 
-          if (lastSelectedOptionOrigin == data.data[i].id) {
-            originOption.selected = true;
-          }
-          if (lastSelectedOptionDestination == data.data[i].id) {
-            destinationOption.selected = true;
+          if (selectedOptionOrigin == data.data[i].id) {
+            originOption[i].selected = true;
           }
         }
+
+        localStorage.setItem("selectedOptionOrigin", data.data[0].id);
+
+        for (let i = 2; i < data.data.length; i++) {
+          destinationOption = document.createElement("option");
+          destinationOption.value = data.data[i].id;
+          destinationOption.innerHTML = data.data[i].name;
+          destination.appendChild(destinationOption);
+
+          if (selectedOptionDestination == data.data[i].id) {
+            destinationOption[i].selected = true;
+          }
+        }
+        localStorage.setItem("selectedOptionDestination", data.data[2].id);
       })
+
       .catch((error) => console.log("error", error));
-  };
-
-  const getJourneys = () => {
-    console.log("getJourneys");
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-      originId: lastSelectedOptionOrigin,
-      destinationId: lastSelectedOptionDestination,
-      departureDate: selectedDate,
-    });
-    console.log(raw);
-
-    const requestOptionsJourney = {
-      method: "POST",
-      body: raw,
-      redirect: "follow",
-      headers: myHeaders,
-    };
   };
 
   function switchInputs() {
@@ -99,15 +79,13 @@ try {
 
   window.addEventListener("load", () => {
     getLocations();
-
   });
 
   const submitBtn = document.querySelector("[type=submit]");
 
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    window.location.href =
-      "/journey-index.html";
+    window.location.href = "/journey-index.html";
   });
 } catch (error) {
   console.log(error);
