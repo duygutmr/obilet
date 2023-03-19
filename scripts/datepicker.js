@@ -21,6 +21,7 @@ try {
     formatDate: "yyyy-mm-dd",
     onSelect (instance, date) {
       localStorage.setItem("selectedDate", date.toISOString().slice(0, 10));
+      dateInput.value = date.toISOString().slice(0, 10);
     },
 
     customMonths: [

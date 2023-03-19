@@ -5,9 +5,7 @@ try {
   const cardWrapper = document.querySelectorAll(".card-wrapper");
 
   const getJourneys = () => {
-    const lastSelectedOptionOrigin = localStorage.getItem(
-      "selectedOptionOrigin"
-    );
+    const lastSelectedOptionOrigin = localStorage.getItem("selectedOptionOrigin");
     const lastSelectedOptionDestination = localStorage.getItem(
       "selectedOptionDestination"
     );
