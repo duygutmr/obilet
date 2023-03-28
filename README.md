@@ -1,11 +1,13 @@
 # obilet
 
 ### start server
-yarn install
-node index.js
+inside server folder
+- yarn install
+- node index.js
 
 
 ### start local
-yarn install
-npm run dev
+inside main folder
+- yarn install
+- npm run dev
 
