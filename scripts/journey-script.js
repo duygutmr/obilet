@@ -5,7 +5,9 @@ try {
   const cardWrapper = document.querySelectorAll(".card-wrapper");
 
   const getJourneys = () => {
-    const lastSelectedOptionOrigin = localStorage.getItem("selectedOptionOrigin");
+    const lastSelectedOptionOrigin = localStorage.getItem(
+      "selectedOptionOrigin"
+    );
     const lastSelectedOptionDestination = localStorage.getItem(
       "selectedOptionDestination"
     );
@@ -34,6 +36,8 @@ try {
         let getLocationsDestination;
         let journeyNewDate;
 
+        // journey header start
+
         getLocationsOrigin = document.createElement("p");
         getLocationsOrigin.innerHTML = data.data[0]["origin-location"];
         locations.appendChild(getLocationsOrigin);
@@ -49,24 +53,31 @@ try {
           .replaceAll("-", " / ");
         journeyDate.appendChild(journeyNewDate);
 
+        // journey header end
+
+        const departureTimeArray = [];
+
         for (let i = 0; i < data.data.length; i++) {
           const newCurrency = data.data[i].journey.currency;
           const internetPrice = data.data[i].journey["internet-price"];
           const arrivalTime = data.data[i].journey.arrival
             .split("T")[1]
             .substring(0, 5);
-          const departureTime = data.data[i].journey.departure
-            .split("T")[1]
-            .substring(0, 5);
+          departureTimeArray.push(
+            data.data[i].journey.departure.split("T")[1].substring(0, 5)
+          );
           const journeyOrigin = data.data[i].journey.origin;
           const journeyDestination = data.data[i].journey.destination;
-          const new_card = `  <div class="card mb-2">
+
+          departureTimeArray.sort();
+
+          const newCard = `  <div class="card mb-2">
             <div class="row card-row">
               <div class="col">
                 <div class="card-info">
                   <div class="d-flex flex-column">
                     <span>Kalkış</span>
-                    <span><span id="departureTime">${departureTime}</span></span>
+                    <span><span id="departureTime">${departureTimeArray[i]}</span></span>
                   </div>
                   <span class="d-flex justify-content-center mx-2">
                       <?xml version="1.0" encoding="iso-8859-1"?>
@@ -116,7 +127,7 @@ try {
             </div>
           </div>`;
 
-          cardWrapper[0].innerHTML += new_card;
+          cardWrapper[0].innerHTML += newCard;
         }
       })
       .catch((error) => console.log("error", error));
