@@ -89,11 +89,16 @@ try {
   function switchInputs() {
     const originValue = origin.options[origin.selectedIndex];
     const destinationValue = destination.options[destination.selectedIndex];
+
     localStorage.setItem("selectedOptionOrigin", originValue.value);
     localStorage.setItem("selectedOptionDestination", destinationValue.value);
 
     origin.options[origin.selectedIndex] = destinationValue;
     destination.options[destination.selectedIndex] = originValue;
+
+    document.querySelector(".origin .ss-single").innerHTML = originValue.text;
+    document.querySelector(".destination .ss-single").innerHTML =
+      destinationValue.text;
   }
 
   const switchBtn = document.querySelector(".switch-btn");
