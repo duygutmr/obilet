@@ -48,6 +48,14 @@ try {
           }
         }
 
+        const selectOrigin = new SlimSelect({
+          select: origin,
+          settings: {
+            searchPlaceholder: "il veya ilçe adı giriniz",
+          },
+        });
+        selectOrigin.setData(data.data);
+
         if (localStorage.getItem("selectedOptionOrigin") == null) {
           localStorage.setItem("selectedOptionOrigin", data.data[0].id);
         }
@@ -62,6 +70,13 @@ try {
             destinationOption.selected = true;
           }
         }
+        const selectDestination = new SlimSelect({
+          select: destination,
+          settings: {
+            searchPlaceholder: "il veya ilçe adı giriniz",
+          },
+        });
+        selectDestination.setData(data.data);
 
         if (localStorage.getItem("selectedOptionDestination") == null) {
           localStorage.setItem("selectedOptionDestination", data.data[2].id);

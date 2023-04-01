@@ -125,6 +125,17 @@ header.journey-header a .icon {
     color: #2f4eb4;
     font-weight: 500;
 }
+.search form .form-group .select {
+    width: 250px;
+}
+@media(min-width:1200px) {
+    .search form .form-group .select {
+        width: 400px;
+    }
+}
+.search form .form-group .select .ss-main {
+    border:none;
+}
 .search form .form-group .icon {
     color: #9d9d9c;
     margin-right: 14px;
