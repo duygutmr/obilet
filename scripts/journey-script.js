@@ -13,8 +13,9 @@ try {
     );
     const selectedDate = localStorage.getItem("selectedDate");
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    const myHeaders = {
+      "Content-Type": "application/json",
+    };
 
     const raw = JSON.stringify({
       originId: lastSelectedOptionOrigin,

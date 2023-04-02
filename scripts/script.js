@@ -2,22 +2,30 @@ try {
   const origin = document.getElementById("origin");
   const destination = document.getElementById("destination");
 
-  var tomorrow = new Date();
+  const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-
-  const selectedOptionOrigin = origin.options[origin.selectedIndex];
-  const selectedOptionDestination =
-    destination.options[destination.selectedIndex];
-
-  origin.addEventListener("change", (e) => {
-    localStorage.setItem("selectedOptionOrigin", e.target.value);
-  });
-
-  destination.addEventListener("change", (e) => {
-    localStorage.setItem("selectedOptionDestination", e.target.value);
-  });
-
   localStorage.setItem("selectedDate", tomorrow.toISOString().slice(0, 10));
+
+  const submitBtn = document.querySelector(".btn.btn-primary");
+  
+  const handleSelectChange = () => {
+    const originValue = origin.value;
+    const destinationValue = destination.value;
+
+    localStorage.setItem("selectedOptionOrigin", originValue);
+    localStorage.setItem("selectedOptionDestination", destinationValue);
+
+    // Disable the submit button if the selected values are the same
+    if (originValue === destinationValue) {
+      toastr();
+      submitBtn.classList.add("disabled");
+    } else {
+      submitBtn.classList.remove("disabled");
+    }
+  }
+
+  origin.addEventListener("change", handleSelectChange);
+  destination.addEventListener("change", handleSelectChange);
 
   const lastSelectedOptionOrigin = localStorage.getItem("selectedOptionOrigin");
   const lastSelectedOptionDestination = localStorage.getItem(
@@ -86,7 +94,7 @@ try {
       .catch((error) => console.log("error", error));
   };
 
-  function switchInputs() {
+  const switchInputs = () => {
     const originValue = origin.options[origin.selectedIndex];
     const destinationValue = destination.options[destination.selectedIndex];
 
@@ -110,12 +118,16 @@ try {
     getLocations();
   });
 
-  const submitBtn = document.querySelector("[type=submit]");
-
-  submitBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.location.href = "/journey-index.html";
-  });
+  const toastr = () => {
+    new Toastify({
+      text: "lütfen farklı şehirler seçiniz",
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      className: "error",
+      backgroundColor: "#ff0000",
+    }).showToast();
+  };
 } catch (error) {
   console.log(error);
 }
