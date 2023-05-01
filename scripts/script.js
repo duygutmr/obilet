@@ -2,12 +2,14 @@ try {
   const origin = document.getElementById("origin");
   const destination = document.getElementById("destination");
 
+  const loader = document.getElementById("loading");
+
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   localStorage.setItem("selectedDate", tomorrow.toISOString().slice(0, 10));
 
   const submitBtn = document.querySelector(".btn.btn-primary");
-  
+
   const handleSelectChange = () => {
     const originValue = origin.value;
     const destinationValue = destination.value;
@@ -39,8 +41,10 @@ try {
     };
 
     fetch("http://localhost:3000/getBusLocation", requestOptions)
+
       .then((response) => response.json())
       .then((data) => {
+        hideLoading();
         let originOption;
         let destinationOption;
         for (let i = 0; i < data.data.length; i++) {
@@ -116,7 +120,14 @@ try {
 
   window.addEventListener("load", () => {
     getLocations();
+    displayLoading();
   });
+  const displayLoading = () => {
+    loader.classList.add("display");
+  }
+  const hideLoading = () => {
+    loader.classList.remove("display");
+  }
 
   const toastr = () => {
     new Toastify({

@@ -4,6 +4,8 @@ try {
   const journeyDate = document.getElementById("journeyDate");
   const cardWrapper = document.querySelectorAll(".card-wrapper");
 
+  const loader = document.getElementById("loading");
+
   const getJourneys = () => {
     const lastSelectedOptionOrigin = localStorage.getItem(
       "selectedOptionOrigin"
@@ -33,6 +35,7 @@ try {
     fetch("http://localhost:3000/getJourney", requestOptionsJourney)
       .then((response) => response.json())
       .then((data) => {
+        hideLoading();
         let getLocationsOrigin;
         let getLocationsDestination;
         let journeyNewDate;
@@ -135,7 +138,14 @@ try {
   };
   window.addEventListener("load", () => {
     getJourneys();
+    displayLoading();
   });
+  const displayLoading = () => {
+    loader.classList.add("display");
+  }
+  const hideLoading = () => {
+    loader.classList.remove("display");
+  }
 } catch (error) {
   console.log(error);
 }
